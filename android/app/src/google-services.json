@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "759286941239",
+    "project_id": "calendar-scheduler-425310",
+    "storage_bucket": "calendar-scheduler-425310.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:759286941239:android:bbfa3488223a40aaf9a1b2",
+        "android_client_info": {
+          "package_name": "com.example.calendar_scheduler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "759286941239-lren7vh84d7eb47t4dgj0ravo7sjb3ev.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.calendar_scheduler",
+            "certificate_hash": "d4af620497c013f8904ea07339ac93a08ce81c37"
+          }
+        },
+        {
+          "client_id": "759286941239-0mpfrcqmvb02qqjcageeeoih8snv1pc0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdJGFy0PXCjhyYSmhu1tm5wW8QB8OYyH8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "759286941239-0mpfrcqmvb02qqjcageeeoih8snv1pc0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "759286941239-lfjjbchea8dgp1aopnihasv0pe80ig8u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.calendarScheduler"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
