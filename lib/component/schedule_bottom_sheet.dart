@@ -5,6 +5,7 @@ import 'package:calendar_scheduler/const/colors.dart';
 import 'package:calendar_scheduler/model/schedule_model.dart';
 import 'package:uuid/uuid.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ScheduleBottomSheet extends StatefulWidget {
   final DateTime selectedDate;
@@ -34,10 +35,12 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
       key: formKey, // ➋ Form을 조작할 키값
       child: SafeArea(
         child: Container(
-          height: MediaQuery.of(context).size.height / 2 + bottomInset, // ➋ 화면 반 높이에 키보드 높이 추가하기
+          height: MediaQuery.of(context).size.height / 2 +
+              bottomInset, // ➋ 화면 반 높이에 키보드 높이 추가하기
           color: Colors.white,
           child: Padding(
-            padding: EdgeInsets.only(left: 8, right: 8, top: 8, bottom: bottomInset),
+            padding:
+                EdgeInsets.only(left: 8, right: 8, top: 8, bottom: bottomInset),
             child: Column(
               // ➋ 시간 관련 텍스트 필드와 내용관련 텍스트 필드 세로로 배치
               children: [
@@ -117,32 +120,11 @@ class _ScheduleBottomSheetState extends State<ScheduleBottomSheet> {
         endTime: endTime!,
       );
 
-      final user = FirebaseAuth.instance.currentUser;
+      final supabase = Supabase.instance.client;
 
-      if (user == null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('다시 로그인을 해주세요.'),
-          ),
-        );
-
-        Navigator.of(context).pop();
-
-        return;
-      }
-
-      // ➋ 스케쥴 모델 파이어스토어에 삽입하기
-      await FirebaseFirestore.instance
-          .collection(
-        'schedule',
-      )
-          .doc(schedule.id)
-          .set(
-        {
-          ...schedule.toJson(),
-          'author': user.email,
-        },
-      );
+      await supabase.from('schedule').insert(
+            schedule.toJson(),
+          );
 
       Navigator.of(context).pop();
     }
